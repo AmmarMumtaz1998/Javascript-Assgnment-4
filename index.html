@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Assignment-17</title>
+    <style>
+        .con {
+            background:  #3dd35d;
+            background: -webkit-linear-gradient(to right, #F8FFAE, #d11ff5); 
+            background: linear-gradient(to right, #F8FFAE, #d11ff5); 
+            border: 1px solid #e74c3c;
+            margin-top: 10px;
+            padding: 10px 10px;
+            font-size: larger;
+
+        }
+        .button1 {
+            margin-top: .5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container con">
+        <h4>Question No.1</h4>
+        <p><b>List of  properties of Given Object</b></p>
+    <script>
+        var student = {
+    name : "David Rayy",
+    sclass : "VI",
+    rollno : 12 
+};
+document.write(student.name+ " " + student.sclass + " " + student.rollno);
+    </script>
+    <h4>Question No.2</h4>
+    <p><b>Deleting roll no. Property from object and print properties before and after deleting </b></p>
+    <h5><u>Before Deleting</u></h5>
+<script>
+    var student = {
+name : "David Rayy",
+sclass : "VI",
+rollno : 12 
+};
+document.write(student.name+ " " + student.sclass + " " + student.rollno);
+delete student.rollno;
+</script>
+<h5><u>After Deleting</u></h5>
+<script>
+    document.write(student.name+ " " + student.sclass);
+</script>
+<h4>Question No.3</h4>
+    <p><b>length of given JavaScript object </b></p>
+    
+    <script>
+        var student = {
+name : "David Rayy",
+sclass : "VI",
+rollno : 12 
+};
+document.write(Object.values(student).length);
+    </script>
+    <h4>Question No.4</h4>
+    <p><b>display the reading status</b></p>
+<script>
+var library = [ 
+   {
+       author: 'Bill Gates',
+       title: 'The Road Ahead',
+       readingStatus: true
+   },
+   {
+       author: 'Steve Jobs',
+       title: 'Walter Isaacson',
+       readingStatus: true
+   },
+   {
+       author: 'Suzanne Collins',
+       title:  'Mockingjay: The Final Book of The Hunger Games', 
+       readingStatus: false
+   }];
+    for (var i = 0; i < library.length; i++) 
+   {
+    var book = "'" + library[i].title + "'" + ' by ' + library[i].author + ".";
+    if (library[i].readingStatus) {
+        document.write("Already read " + book + "<br>");
+    } else
+    {
+     document.write("You still need to read " + book);
+    }
+   }
+</script>
+
+
+
+<h4>Question No.5</h4>
+    <p><b>program to get the volume of a Cylinder with four decimal places using object classes</b></p>
+
+    <script>
+        function Cylinder(cylinder_height,cylinder_diameter) {
+            this.cylinder_diameter = cylinder_diameter;
+            this.cylinder_height = cylinder_height;
+        }
+        Cylinder.prototype.Volume = function () {
+        var radius = this.cylinder_diameter / 2;
+        return this.cylinder_height * Math.PI * radius * radius;
+        };
+        var cyl = new Cylinder(7,8);
+        document.write("Volume = " + cyl.Volume().toFixed(4));
+    </script>
+
+
+    <h4>Question No.6</h4>
+    <p><b> Bubble Sort algorithm in JavaScript</b></p>
+    <script>
+        function bubble_Sort(a){
+ for (let i = a.length; i > 0; i-- ) {
+     for (let j = 0 ; j < i-1; j++) {
+         if (a[j] > a[j + 1]) {
+            [a[j], a[j+1]] = [a[j+1], a[j]];
+                 }
+     }
+ }
+ return a;
+}
+const result = bubble_Sort([6,4,0, 3,-2,1]);
+document.write(result);
+
+    </script>
+
+    <h4>Question No.7</h4>
+    <p><b> JavaScript program which returns a subset of a string.</b></p>
+    <script>
+        function _keys(obj) 
+    {
+        if (!isObject(obj)) return [];
+        if (Object.keys) return Object.keys(obj);
+        var keys = [];
+        for (var key in obj) if (_.has(obj, key)) keys.push(key);
+        return keys;
+    }
+    function isObject(obj) 
+    {
+        var type = typeof obj;
+        return type === 'function' || type === 'object' && !!obj;
+    }
+    document.write(_keys({red: "#FF0000", green: "#00FF00", white: "#FFFFFF"}));
+    </script>
+
+<h4>Question No.8</h4>
+<p><b>JavaScript program to create a Clock.  </b><br>To check the answer go to console.</p>
+    <script>
+        function my_Clock() 
+  {
+  this.cur_date = new Date();
+  this.hours = this.cur_date.getHours();
+  this.minutes = this.cur_date.getMinutes();
+  this.seconds = this.cur_date.getSeconds();
+  }
+my_Clock.prototype.run = function ()
+  {
+  setInterval(this.update.bind(this), 1000);
+  };
+my_Clock.prototype.update = function () 
+  {
+  this.updateTime(1);
+  console.log(this.hours + ":" + this.minutes + ":" + this.seconds);
+  };
+my_Clock.prototype.updateTime = function (secs) 
+  {
+  this.seconds+= secs;
+ if (this.seconds >= 60)
+  {
+  this.minutes++;
+  this.seconds= 0;
+  }
+ if (this.minutes >= 60)
+  {
+  this.hours++;
+  this.minutes=0;
+  }
+if (this.hours >= 24)
+  {
+  this.hours = 0;
+  }
+};
+var clock = new my_Clock();
+  clock.run();
+   </script>
+
+<h4>Question No.9</h4>
+<p><b>JavaScript program to calculate the area and perimeter of a circle.   </b></p>
+   <script>
+   function circle(radius)
+    {
+        this.radius = radius;
+      // area method
+        this.area = function () 
+        {
+            return Math.PI * this.radius * this.radius;
+        };
+      // perimeter method
+        this.perimeter = function ()
+        {
+            return 2*Math.PI*this.radius;
+        };
+    }
+    var c = new circle(3);
+    document.write('Area =', c.area().toFixed(2));
+    document.write('perimeter =', c.perimeter().toFixed(2));</script>
+
+<h4>Question No.10</h4>
+<p><b>JavaScript program to sort an array of JavaScript objects. </b></p>
+<script>
+  var library = [ 
+   { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254},
+   { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264},
+   { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245}
+   ];
+
+function compare_to_sort(x,y) 
+ {
+  if (x.title < y.title)
+    return -1;
+  if (x.title > y.title)
+    return 1;
+  return 0;
+ }
+
+document.write(library.sort(compare_to_sort));
+</script>
+
+<h4>Question No.11</h4>
+<p><b>JavaScript function to print all the methods in an JavaScript object.   </b></p>
+<script>
+    function FindAllMethods(obj) {
+    return Object.getOwnPropertyNames(obj).filter(function(property) {
+        return typeof obj[property] == "function";
+    });
+}
+console.log(FindAllMethods(Math));
+console.log(FindAllMethods(Array));
+function all_properties(obj) 
+{
+ return Object.getOwnPropertyNames(obj);
+}
+
+document.write(all_properties(Math));
+
+document.write(all_properties(Array));
+</script>
+
+<h4>Question No.12</h4>
+<p><b>JavaScript function to parse an URL</b></p>
+    <script>
+        function parse_URL(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    return {
+        source: url,
+        protocol: a.protocol.replace(':', ''),
+        host: a.hostname,
+        port: a.port,
+        query: a.search,
+        params: (function () {
+            var ret = {},
+                seg = a.search.replace(/^\?/, '').split('&'),
+                len = seg.length,
+                i = 0,
+                s;
+            for (; i < len; i++) {
+                if (!seg[i]) {
+                    continue;
+                }
+                s = seg[i].split('=');
+                ret[s[0]] = s[1];
+            }
+            return ret;
+        })(),
+        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+        hash: a.hash.replace('#', ''),
+        path: a.pathname.replace(/^([^\/])/, '/$1'),
+        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+        segments: a.pathname.replace(/^\//, '').split('/')
+    };
+}
+
+document.write(parse_URL('https://github.com/pubnub/python/search?utf8=%E2%9C%93&q=python'));
+    </script>
+
+    </div>
+    
+  </div>
+
+</body>
+</html>
